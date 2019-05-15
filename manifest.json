@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Modify java scripts",
+  "version": "0.1.18",
+  "description": "naive attempt and stopping java script execution",
+ 
+ 
+  "permissions": [
+      "contextMenus",
+      "privacy",
+      "storage",
+      "tabs",
+      "unlimitedStorage",
+      "webNavigation",
+      "webRequest",
+      "webRequestBlocking",
+	  {"fileSystem": ["write"]},
+      "<all_urls>"
+  ],
+  
+   "background": {
+    "persistent": true,
+    "scripts": [
+      "content.js"
+    ]
+  },
+        
+  "content_scripts": [
+    {
+	   
+       "matches": ["<all_urls>"],
+       "match_about_blank": true,
+       "all_frames": true,
+       
+	   "run_at": "document_idle",
+	   "all_frames": true,
+	   "js":["content.js"]
+	   
+     },
+    {
+      "run_at": "document_start",
+      "matches": ["<all_urls>"],
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": [
+        "content.js"
+      ]
+    }
+
+	]
+}
